@@ -110,7 +110,7 @@ public class Tela_12 extends javax.swing.JFrame {
 
         jLabel2.setText("Consulta De Produtos");
 
-        jLabel3.setText("Descriçao:");
+        jLabel3.setText("Nome");
 
         txtDesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,9 +125,9 @@ public class Tela_12 extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Preço:");
+        jLabel4.setText("Login");
 
-        jLabel5.setText("Qtd:");
+        jLabel5.setText("Email");
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setText("Excluir");
@@ -164,13 +164,13 @@ public class Tela_12 extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
                                 .addComponent(jLabel5)
-                                .addGap(52, 52, 52)
-                                .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtQtd))
                             .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +182,7 @@ public class Tela_12 extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel2)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,12 +303,12 @@ public class Tela_12 extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (jTProdutos.getSelectedRow() != -1) {
 
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            funcionario f = new funcionario();
+            funcionarioDAO dao = new funcionarioDAO();
 
-            p.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
+            f.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
             
-            dao.delete(p);
+            dao.delete(f);
 
             txtDesc.setText("");
             txtQtd.setText("");
@@ -325,14 +325,14 @@ public class Tela_12 extends javax.swing.JFrame {
         // TODO add your handling code here:
              if (jTProdutos.getSelectedRow() != -1) {
 
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            funcionario f = new funcionario();
+            funcionarioDAO dao = new funcionarioDAO();
 
-            p.setDescricao(txtDesc.getText());
-            p.setQtd(Integer.parseInt(txtQtd.getText()));
-            p.setPreco(Double.parseDouble(txtPreco.getText()));
-            p.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
-            dao.update(p);
+            f.setNome(txtDesc.getText());
+            f.setEmail((txtQtd.getText()));
+            f.setLogin((txtPreco.getText()));
+            f.setId((int) jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0));
+            dao.update(f);
 
             txtDesc.setText("");
             txtQtd.setText("");
